@@ -80,6 +80,8 @@ public class Recorder : IRecorder
     {
         GUI.Label(new Rect(0, 0, 200, 20), "开始/暂停:F12");
         GUI.Label(new Rect(0, 20, 200, 20), "停止:Shift + F12");
+        GUI.Label(new Rect(0, 40, 200, 20), "前后左右: WASD");
+        GUI.Label(new Rect(0, 60, 200, 20), "上下: EQ");
     }
 
     private void OnKeyInput()
