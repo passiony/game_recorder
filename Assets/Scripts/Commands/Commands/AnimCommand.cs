@@ -9,9 +9,4 @@ public class AnimCommand : ICommand
     {
         this.type = ECommand.Anim;
     }
-
-    public AnimCommand(string animName)
-    {
-        this.animName = animName;
-    }
 }

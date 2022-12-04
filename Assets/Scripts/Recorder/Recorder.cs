@@ -15,21 +15,12 @@ public class Recorder : IRecorder
         this.fileName = fileName;
     }
 
-    public void RecordUnit(RecordUnit unit)
-    {
-        var pos = unit.transform.position;
-        var rot = unit.transform.eulerAngles;
-        var cmd = new PosCommand(pos, rot);
-        cmd.owner = unit.id;
-        RecordFrame(cmd);
-    }
-
     public void StartRecord()
     {
         recording = true;
         Debug.Log("开始录制");
 
-        RecordManager.Instance.RecordUnits();
+        RecordManager.Instance.RefreshUnits();
     }
 
     public void PauseRecord()
@@ -49,7 +40,7 @@ public class Recorder : IRecorder
         Debug.Log("停止录制:" + fileName);
     }
 
-    public void RecordFrame(ICommand cmd)
+    public void RecordCommand(ICommand cmd)
     {
         if (!recording)
         {

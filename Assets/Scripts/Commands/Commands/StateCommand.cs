@@ -9,9 +9,4 @@ public class StateCommand : ICommand
     {
         this.type = ECommand.State;
     }
-
-    public StateCommand(int state)
-    {
-        this.state = state;
-    }
 }

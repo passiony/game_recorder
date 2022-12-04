@@ -151,8 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34799549c454962b9c4745d74bd31e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
-  fileName: record001
+  mode: 1
+  fileName: record002
   timeScale: 1
 --- !u!4 &397699340
 Transform:

@@ -60,13 +60,13 @@ public class RecordManager : MonoSingleton<RecordManager>
     /// <summary>
     /// 刷新unit信息
     /// </summary>
-    public void RecordUnits()
+    public void RefreshUnits()
     {
         if (mode == EMode.Record)
         {
             foreach (var pair in units)
             {
-                recorder.RecordUnit(pair.Value);
+                RecordUtility.RecordPos(pair.Value);
             }
         }
     }
@@ -75,11 +75,11 @@ public class RecordManager : MonoSingleton<RecordManager>
     /// 记录关键帧
     /// </summary>
     /// <param name="command"></param>
-    public void RecordFrame(ICommand command)
+    public void RecordCommand(ICommand command)
     {
         if (mode == EMode.Record)
         {
-            recorder.RecordFrame(command);
+            recorder.RecordCommand(command);
         }
     }
 

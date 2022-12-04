@@ -16,12 +16,6 @@ public class RecordUnit : MonoBehaviour
     protected Vector3Int curr_dir = Vector3Int.zero;
     protected Vector3 dir = Vector3.zero;
     
-    public void RecordFrame(ICommand command)
-    {
-        command.owner = id;
-        RecordManager.Instance.RecordFrame(command);
-    }
-
     public void PlayAnim(string animName)
     {
         animator.Play(animName);
@@ -40,7 +34,7 @@ public class RecordUnit : MonoBehaviour
 
         if (curr_dir != last_dir)
         {
-            this.RecordFrame(new MoveCommand(curr_dir, 10));
+            RecordUtility.RecordMove(this,curr_dir,10);
         }
 
         dir.x = curr_dir.x;
