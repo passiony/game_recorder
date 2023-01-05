@@ -7,10 +7,15 @@ public struct RVector3
     public float y;
     public float z;
 
-    public RVector3(float x,float y,float z)
+    public RVector3(float x, float y, float z)
     {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public override string ToString()
+    {
+        return $"x:{x},y:{y},z:{z}";
     }
 }

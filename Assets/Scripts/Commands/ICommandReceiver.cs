@@ -1,36 +1,38 @@
 ﻿using System.Collections.Generic;
 using System;
-using UnityEngine;
 
-public class ICommandReceiver
+namespace Record
 {
-    private Dictionary<ECommand, Delegate> mCommands = new Dictionary<ECommand, Delegate>();
-
-    public void AddCommand<T>(ECommand cmd, CommandHandler<T> handler) where T : ICommand
+    public class ICommandReceiver
     {
-        if (!this.mCommands.ContainsKey(cmd))
-        {
-            this.mCommands.Add(cmd, handler);
-        }
-    }
+        private Dictionary<ECommand, Delegate> mCommands = new Dictionary<ECommand, Delegate>();
 
-    public ECommandReply Command<T>(T cmd) where T : ICommand
-    {
-        Delegate del = null;
-        mCommands.TryGetValue(cmd.type, out del);
-        if (del == null)
+        public void AddCommand<T>(ECommand cmd, CommandHandler<T> handler) where T : ICommand
         {
-            return ECommandReply.N;
+            if (!this.mCommands.ContainsKey(cmd))
+            {
+                this.mCommands.Add(cmd, handler);
+            }
         }
 
-        return (ECommandReply)del.DynamicInvoke(cmd);
+        public ECommandReply Command<T>(T cmd) where T : ICommand
+        {
+            Delegate del = null;
+            mCommands.TryGetValue(cmd.type, out del);
+            if (del == null)
+            {
+                return ECommandReply.N;
+            }
 
-        // CommandHandler<T> callback = del as CommandHandler<T>;
-        // if (callback == null)
-        // {
-        //     Debug.LogError(typeof(T).ToString() + cmd);
-        //     return ECommandReply.N;
-        // }
-        // return callback(cmd);
+            return (ECommandReply)del.DynamicInvoke(cmd);
+
+            // CommandHandler<T> callback = del as CommandHandler<T>;
+            // if (callback == null)
+            // {
+            //     Debug.LogError(typeof(T).ToString() + cmd);
+            //     return ECommandReply.N;
+            // }
+            // return callback(cmd);
+        }
     }
 }

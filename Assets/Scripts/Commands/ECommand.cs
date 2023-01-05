@@ -1,7 +1,11 @@
-public enum ECommand : byte
+namespace Record
 {
-    Pos,
-    Move,
-    Anim, 
-    State, 
+    public enum ECommand : byte
+    {
+        Pos,
+        Move,
+        Rotate,
+        Anim,
+        State,
+    }
 }
